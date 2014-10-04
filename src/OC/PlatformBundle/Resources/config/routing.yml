@@ -1,0 +1,27 @@
+oc_platform_home:
+    pattern:  /{page}
+    defaults: { _controller: OCPlatformBundle:Advert:index, page: 1 }
+    requirements:
+        page: \d*
+    
+oc_platform_view:
+    pattern:  /advert/{id}
+    defaults: { _controller: OCPlatformBundle:Advert:view }
+    requirements:
+        id: \d+
+    
+oc_platform_add:
+    pattern:  /add
+    defaults: { _controller: OCPlatformBundle:Advert:add }
+    
+oc_platform_edit:
+    pattern:  /edit/{id}
+    defaults: { _controller: OCPlatformBundle:Advert:edit }
+    requirements:
+        id: \d+
+        
+oc_platform_delete:
+    pattern:  /delete/{id}
+    defaults: { _controller: OCPlatformBundle:Advert:delete }
+    requirements:
+        id: \d+
