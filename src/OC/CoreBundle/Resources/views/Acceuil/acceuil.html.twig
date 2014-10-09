@@ -1,0 +1,31 @@
+{# template de la page d'acceuil du site #}
+
+{% extends "OCCoreBundle::layoutAcceuil.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+  
+
+{% block acceuil %}
+  
+  {% for message in app.session.flashbag.get('notice') %}  
+<p>Message flash :  {{ message }}</p>   
+{% endfor %}
+
+<h2>Nos dernières annonces</h2>
+
+  <ul>
+    {% for advert in listAdverts %}
+      <li>
+        <a href="{{ path('oc_platform_view', {'id': advert.id}) }}">
+          {{ advert.title }}
+        </a>
+        par {{ advert.author }},
+        le {{ advert.date|date('d/m/Y') }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'annonces</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
